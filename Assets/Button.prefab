@@ -281,3 +281,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonText: {fileID: 384545586155694722}
+  WinTextContainer: {fileID: 0}
+  WinText: {fileID: 0}

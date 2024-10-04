@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ButtonsArray : MonoBehaviour
@@ -7,10 +9,12 @@ public class ButtonsArray : MonoBehaviour
     // Start is called before the first frame update
     public GameObject buttonPrefab;
     public GameObject buttonContainer;
-    public  GameObject[,] ticTacToeBoard = new GameObject[3, 3];
+    public static GameObject[,] ticTacToeBoard = new GameObject[3, 3];
+
     void Start()
     {
         CreateArray();
+        
     }
 
     public void CreateArray()
@@ -28,4 +32,6 @@ public class ButtonsArray : MonoBehaviour
             Y = 349.5f;
         }
     }
+
+
 }
