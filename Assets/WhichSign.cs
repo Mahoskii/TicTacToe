@@ -26,12 +26,12 @@ public class WhichSign : MonoBehaviour
             if (OddOrEven % 2 == 0)
             {
                 ButtonText.GetComponent<TextMeshProUGUI>().text = "O";
-                Debug.Log(OddOrEven);
+                
             }
             else
             {
                 ButtonText.GetComponent<TextMeshProUGUI>().text = "X";
-                Debug.Log(OddOrEven);
+                
             }
         }
     }
