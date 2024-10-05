@@ -11,14 +11,6 @@ public class WhichSign : MonoBehaviour
     public TextMeshProUGUI ButtonText;
     private static int OddOrEven;
 
-    //public GameObject WinTextContainer;
-    //public TextMeshProUGUI WinText;
-
-    private void Start()
-    {
-
-    }
-
     public void ButtonPressed()
     {
 
@@ -29,40 +21,12 @@ public class WhichSign : MonoBehaviour
             if (OddOrEven % 2 == 0)
             {
                 ButtonText.GetComponent<TextMeshProUGUI>().text = "O";
-                CheckWinner("O");
             }
             else
             {
                 ButtonText.GetComponent<TextMeshProUGUI>().text = "X";
-                CheckWinner("X");
             }
         }
     }
 
-    public void CheckWinner(string sign)
-    {
-        if (ButtonsArray.ticTacToeBoard[0, 0].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[1, 0].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[1, 0].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[2, 0].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[0, 0].GetComponentInChildren<TextMeshProUGUI>().text != ""
-            ||
-           ButtonsArray.ticTacToeBoard[0, 1].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[2, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[0, 1].GetComponentInChildren<TextMeshProUGUI>().text != ""
-            ||
-           ButtonsArray.ticTacToeBoard[0, 2].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[1, 2].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[1, 2].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[2, 2].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[0, 2].GetComponentInChildren<TextMeshProUGUI>().text != ""
-           ||
-           ButtonsArray.ticTacToeBoard[0, 0].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[0, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[0, 1].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[0, 2].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[0, 0].GetComponentInChildren<TextMeshProUGUI>().text != ""
-           ||
-           ButtonsArray.ticTacToeBoard[1, 0].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[2, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[1, 0].GetComponentInChildren<TextMeshProUGUI>().text != ""
-           ||
-           ButtonsArray.ticTacToeBoard[2, 0].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[2, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[2, 1].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[2, 2].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[2, 0].GetComponentInChildren<TextMeshProUGUI>().text != ""
-           ||
-           ButtonsArray.ticTacToeBoard[0, 0].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[2, 2].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[0, 0].GetComponentInChildren<TextMeshProUGUI>().text != ""
-           ||
-           ButtonsArray.ticTacToeBoard[2, 0].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[1, 1].GetComponentInChildren<TextMeshProUGUI>().text == ButtonsArray.ticTacToeBoard[0, 2].GetComponentInChildren<TextMeshProUGUI>().text && ButtonsArray.ticTacToeBoard[2, 0].GetComponentInChildren<TextMeshProUGUI>().text != ""
-            )
-        {
-            //Instantiate(WinText, new Vector2(650.5f, 159.5f), Quaternion.identity, WinTextContainer.transform);
-            //WinText.text = "We have a winner!";
-            Debug.Log($"{sign} is the winner!");
-            return;
-        }
-
-    }
 }

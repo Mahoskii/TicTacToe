@@ -25,7 +25,7 @@ public class ButtonsArray : MonoBehaviour
         {
             for (int col = 0; col < 3; col++)
             {
-                ticTacToeBoard[row,col] = Instantiate(buttonPrefab, new Vector2(X, Y), Quaternion.identity, buttonContainer.transform);
+                ticTacToeBoard[row, col] = Instantiate(buttonPrefab, new Vector2(X, Y), Quaternion.identity, buttonContainer.transform);
                 Y -= 100;
             }
             X += 100;

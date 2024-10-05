@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 4435632399175717081}
   - component: {fileID: 6659037029441721762}
   - component: {fileID: 7425828379661013105}
+  - component: {fileID: 6644257169061715162}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -268,6 +269,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6644257169061715162}
+        m_TargetAssemblyTypeName: CheckingForWinner, Assembly-CSharp
+        m_MethodName: CheckWinner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7425828379661013105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,5 +294,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonText: {fileID: 384545586155694722}
-  WinTextContainer: {fileID: 0}
-  WinText: {fileID: 0}
+--- !u!114 &6644257169061715162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390201966878022547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c57d7ccf2a2034482d181b53253808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wintxt: {fileID: 8820907266322276459, guid: ff9274b438f93eb40a38e8cbccee354e, type: 3}
