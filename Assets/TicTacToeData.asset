@@ -35,6 +35,6 @@ MonoBehaviour:
   thirdRow: 0
   firstDiagonal: 0
   secondDiagonal: 0
-  xScore: 1
+  xScore: 0
   oScore: 0
   outcome: 
