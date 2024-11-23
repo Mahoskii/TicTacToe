@@ -5,20 +5,29 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class WinLoseOrTie : MonoBehaviour
 {
     public ScriptableGameData ScriptableData;
+    public Button[] buttonsArray = new Button[9];
+
+    private void Awake()
+    {
+        ScriptableData.InitializeButtonsArray(buttonsArray);
+        ScriptableData.DisableOrEnableButtons(true, false);
+    }
 
     void Update()
     {
-        if (ScriptableData.oddOrEven >= 5)
+        if (ScriptableData.oddOrEven >= 5 && ScriptableData.continueChecking)
         {
             CheckWinLoseOrTie();
         }
-        if (ScriptableData.oddOrEven == 9)
+        if (ScriptableData.oddOrEven == 9 && ScriptableData.continueChecking)
         {
-            Debug.Log("It's a Tie!");
+            ScriptableData.DisableOrEnableButtons(false, false);
+            ScriptableData.outcome = "It's a tie!";
         }
     }
 
@@ -32,15 +41,21 @@ public class WinLoseOrTie : MonoBehaviour
            ScriptableData.firstRow == 237 || ScriptableData.secondRow == 237 || ScriptableData.thirdRow == 237 ||
            ScriptableData.firstDiagonal == 237 || ScriptableData.secondDiagonal == 237)
             {
-                Debug.Log("O is the Winner");
+                ScriptableData.DisableOrEnableButtons(false, false);
+                ScriptableData.outcome = "O is the Winner!!";
+                ScriptableData.oScore++;
             }
 
             if (ScriptableData.firstColumn == 264 || ScriptableData.secondColumn == 264 || ScriptableData.thirdColumn == 264 ||
                 ScriptableData.firstRow == 264 || ScriptableData.secondRow == 264 || ScriptableData.thirdRow == 264 ||
                 ScriptableData.firstDiagonal == 264 || ScriptableData.secondDiagonal == 264)
             {
-                Debug.Log("X is the Winner");
+                ScriptableData.DisableOrEnableButtons(false, false);
+                ScriptableData.outcome = "X is the Winner!!";
+                ScriptableData.xScore++;
             }
         }
     }
+
+
 }

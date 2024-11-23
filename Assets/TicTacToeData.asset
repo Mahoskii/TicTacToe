@@ -13,9 +13,20 @@ MonoBehaviour:
   m_Name: TicTacToeData
   m_EditorClassIdentifier: 
   oddOrEven: 0
+  scriptableButtonsArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   WinCheckArray: 000000000000000000000000000000000000000000000000000000000000000000000000
   arrayIndex: 0
   arrayValue: 0
+  continueChecking: 1
   firstColumn: 0
   secondColumn: 0
   thirdColumn: 0
@@ -24,3 +35,6 @@ MonoBehaviour:
   thirdRow: 0
   firstDiagonal: 0
   secondDiagonal: 0
+  xScore: 1
+  oScore: 0
+  outcome: 
