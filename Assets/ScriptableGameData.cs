@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 using System.Threading;
+using System;
 
 [CreateAssetMenu]
 public class ScriptableGameData : ScriptableObject
@@ -30,6 +32,9 @@ public class ScriptableGameData : ScriptableObject
     public int xScore;
     public int oScore;
     public string outcome;
+
+    public HashSet<int> ButtonsIndexes = new HashSet<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+    private HashSet<int> ButtonsIndexesBackup = new HashSet<int> { 0, 3, 6, 1, 4, 7, 2, 5, 8 };
 
     public void InitializeBoardButtonScore()
     {
@@ -73,6 +78,7 @@ public class ScriptableGameData : ScriptableObject
         firstDiagonal = 0;
         secondDiagonal = 0;
         outcome = "";
+        ButtonsIndexes.UnionWith(ButtonsIndexesBackup);
         DisableOrEnableButtons(true, true);
         continueChecking = false;
     }
@@ -96,6 +102,34 @@ public class ScriptableGameData : ScriptableObject
         for( int i = 0; i < WinCheckArray.Length; i++)
         {
             WinCheckArray[i] = 0;
+        }
+    }
+
+    public int ChooseRandomIndex()
+    {
+        int randomIndex;
+        randomIndex = UnityEngine.Random.Range(0, ButtonsIndexes.Count);
+        Debug.Log("(1)random index:" + randomIndex);
+        int chosenIndex = ButtonsIndexes.ElementAt(randomIndex);
+        Debug.Log("(1)chosen index: " + chosenIndex);
+        ButtonsIndexes.Remove(chosenIndex);
+        foreach (int i in ButtonsIndexes)
+        {
+            Debug.Log("(1)" + i);
+        }
+
+        return randomIndex;
+    }
+    public void RemoveFromHashSet(GameObject gameObject)
+    {
+        int ChosenIndex = Int32.Parse(gameObject.tag);
+        Debug.Log("(2) chosen index:" + ChosenIndex);
+        //int playerChosenIndex = ButtonsIndexes.ElementAt(ChosenIndex);
+        //Debug.Log("(2) player chosen index:" + playerChosenIndex);
+        ButtonsIndexes.Remove(ChosenIndex);
+        foreach (int i in ButtonsIndexes)
+        {
+            Debug.Log("(2)" + i);
         }
     }
 }

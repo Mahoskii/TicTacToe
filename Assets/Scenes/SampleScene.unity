@@ -222,7 +222,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 48168665}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -504,7 +504,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 230471341}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1697,7 +1697,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 607471776}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2463,7 +2463,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 973073075}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2611,7 +2611,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 984938220}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2906,7 +2906,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1060059070}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3054,7 +3054,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1125788826}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3202,7 +3202,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1339969480}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4264,7 +4264,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2073692826}
         m_TargetAssemblyTypeName: WhichSign, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: VSComp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

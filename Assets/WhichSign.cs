@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,34 +14,81 @@ public class WhichSign : MonoBehaviour
     public TextMeshProUGUI ButtonText;
     public static int oddOrEven;
     public ScriptableGameData ScriptableData;
+    
+
 
     public void ButtonPressed()
     {
 
         if (ButtonText.text == "")
         {
-            oddOrEven++;
-            ScriptableData.oddOrEven = oddOrEven;
+            UpdateOddOrEven();
 
             if (oddOrEven % 2 == 0)
             {
-                ButtonText.text = "O";
-                FillWinCheckArray(79);
-                ScriptableData.InitializeBoardButtonScore();
+                UpdateBoard("O", 79);
             }
             else
             {
-                ButtonText.text = "X";
-                FillWinCheckArray(88);
-                ScriptableData.InitializeBoardButtonScore();
+                UpdateBoard("X", 88);
             }
         }
     }
 
-    public void FillWinCheckArray(int asciiValue)
+    public void VSComp()
+    {
+        if (ButtonText.text == "")
+        {
+            UpdateOddOrEven();
+            UpdateBoard("X", 88);
+            ScriptableData.RemoveFromHashSet(gameObject);
+
+        }
+        AutoFill();
+    }
+
+    public void UpdateBoard(string XorO, int ascii)
+    {
+        ButtonText.text = XorO;
+        FillWinCheckArray(ascii, false);
+        ScriptableData.InitializeBoardButtonScore();
+    }
+
+    public async void AutoFill()
+    {
+        ScriptableData.DisableOrEnableButtons(false, false);
+        int chosenIndex = ScriptableData.ChooseRandomIndex();
+        UpdateOddOrEven();
+        if (ScriptableData.scriptableButtonsArray[chosenIndex].GetComponentInChildren<TextMeshProUGUI>().text == "")
+        {
+            await Task.Delay(1000);
+            ScriptableData.scriptableButtonsArray[chosenIndex].GetComponentInChildren<TextMeshProUGUI>().text = "O";
+            FillWinCheckArray(79, true, chosenIndex);
+            ScriptableData.InitializeBoardButtonScore();
+        }
+        ScriptableData.DisableOrEnableButtons(true, false);
+    }
+
+    public void UpdateOddOrEven()
+    {
+        oddOrEven++;
+        ScriptableData.oddOrEven = oddOrEven;
+    }
+ 
+    public void FillWinCheckArray(int asciiValue, bool vsComp, int chosenIndex = 0)
     {
         ScriptableData.arrayValue = asciiValue; // Ascii Number of X(88) or O(79)
-        ScriptableData.arrayIndex = Int32.Parse(gameObject.tag); // the tag of the clicked button (0-8)
+        if (vsComp)
+        {
+            ScriptableData.arrayIndex = chosenIndex;
+        }
+        else
+        {
+            ScriptableData.arrayIndex = Int32.Parse(gameObject.tag); // the tag of the clicked button (0-8)
+        }
         ScriptableData.WinCheckArray[ScriptableData.arrayIndex] = ScriptableData.arrayValue;
     }
+
+
+
 }
