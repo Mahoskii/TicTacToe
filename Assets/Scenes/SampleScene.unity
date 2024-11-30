@@ -773,7 +773,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 194}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &259187112
 MonoBehaviour:
@@ -4983,6 +4983,7 @@ MonoBehaviour:
   gameOutcome: {fileID: 811808010}
   xScoreText: {fileID: 2099958899}
   oScoreText: {fileID: 223104444}
+  updateTitle: {fileID: 259187112}
   ScriptableData: {fileID: 11400000, guid: 4af99c88a65ef0240a4ddbf3a1611394, type: 2}
 --- !u!1 &1479145328
 GameObject:
