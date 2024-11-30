@@ -7,12 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum GameType
-{
-    LocalPVP,
-    VSComp,
-    VSAI
-};
+
 
 public class WhichSign : MonoBehaviour
 {
@@ -21,19 +16,18 @@ public class WhichSign : MonoBehaviour
     public TextMeshProUGUI ButtonText;
     public static int oddOrEven;
     public ScriptableGameData ScriptableData;
-    public GameType curentGameType;
 
     public void ButtonPressed()
     {
-        if(curentGameType == GameType.LocalPVP)
+        if(ScriptableData.curentGameType == GameType.LocalPVP)
         {
             LocalPVP();
         }
-        if (curentGameType == GameType.VSComp)
+        if (ScriptableData.curentGameType == GameType.VSComp)
         {
             VSComp();
         }
-        if (curentGameType == GameType.VSAI)
+        if (ScriptableData.curentGameType == GameType.VSAI)
         {
             Debug.Log("Coming Soon!");
         }

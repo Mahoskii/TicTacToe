@@ -7,9 +7,18 @@ using System.Linq;
 using System.Threading;
 using System;
 
+public enum GameType
+{
+    LocalPVP,
+    VSComp,
+    VSAI
+};
+
 [CreateAssetMenu]
 public class ScriptableGameData : ScriptableObject
 {
+    public GameType curentGameType;
+
     public int oddOrEven;
 
     public Button[] scriptableButtonsArray = new Button[9];
@@ -33,6 +42,7 @@ public class ScriptableGameData : ScriptableObject
     public int xScore;
     public int oScore;
     public string outcome;
+
 
     public HashSet<int> ButtonsIndexes = new HashSet<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
     private HashSet<int> ButtonsIndexesBackup = new HashSet<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
