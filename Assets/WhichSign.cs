@@ -7,6 +7,13 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum GameType
+{
+    LocalPVP,
+    VSComp,
+    VSAI
+};
+
 public class WhichSign : MonoBehaviour
 {
     // on button click, if the text is empty, then generate either X or O.
@@ -14,12 +21,27 @@ public class WhichSign : MonoBehaviour
     public TextMeshProUGUI ButtonText;
     public static int oddOrEven;
     public ScriptableGameData ScriptableData;
-    
-
+    public GameType curentGameType;
 
     public void ButtonPressed()
     {
+        if(curentGameType == GameType.LocalPVP)
+        {
+            LocalPVP();
+        }
+        if (curentGameType == GameType.VSComp)
+        {
+            VSComp();
+        }
+        if (curentGameType == GameType.VSAI)
+        {
+            Debug.Log("Coming Soon!");
+        }
 
+    }
+
+    public void LocalPVP()
+    {
         if (ButtonText.text == "")
         {
             UpdateOddOrEven();
@@ -35,16 +57,19 @@ public class WhichSign : MonoBehaviour
         }
     }
 
-    public void VSComp()
+    public async void VSComp()
     {
         if (ButtonText.text == "")
         {
             UpdateOddOrEven();
             UpdateBoard("X", 88);
             ScriptableData.RemoveFromHashSet(gameObject);
-
+            await Task.Delay(1000);
+            if (oddOrEven < 9 && !ScriptableData.isThereAWinner)
+            {
+                AutoFill();
+            }
         }
-        AutoFill();
     }
 
     public void UpdateBoard(string XorO, int ascii)
@@ -54,14 +79,13 @@ public class WhichSign : MonoBehaviour
         ScriptableData.InitializeBoardButtonScore();
     }
 
-    public async void AutoFill()
+    public  void AutoFill()
     {
         ScriptableData.DisableOrEnableButtons(false, false);
         int chosenIndex = ScriptableData.ChooseRandomIndex();
         UpdateOddOrEven();
         if (ScriptableData.scriptableButtonsArray[chosenIndex].GetComponentInChildren<TextMeshProUGUI>().text == "")
         {
-            await Task.Delay(1000);
             ScriptableData.scriptableButtonsArray[chosenIndex].GetComponentInChildren<TextMeshProUGUI>().text = "O";
             FillWinCheckArray(79, true, chosenIndex);
             ScriptableData.InitializeBoardButtonScore();

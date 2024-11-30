@@ -27,6 +27,7 @@ MonoBehaviour:
   arrayIndex: 0
   arrayValue: 0
   continueChecking: 1
+  isThereAWinner: 0
   firstColumn: 0
   secondColumn: 0
   thirdColumn: 0

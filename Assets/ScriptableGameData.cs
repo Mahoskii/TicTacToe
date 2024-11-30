@@ -19,6 +19,7 @@ public class ScriptableGameData : ScriptableObject
     public int arrayValue;
 
     public bool continueChecking;
+    public bool isThereAWinner = false;
 
     public int firstColumn;
     public int secondColumn;
@@ -34,16 +35,16 @@ public class ScriptableGameData : ScriptableObject
     public string outcome;
 
     public HashSet<int> ButtonsIndexes = new HashSet<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-    private HashSet<int> ButtonsIndexesBackup = new HashSet<int> { 0, 3, 6, 1, 4, 7, 2, 5, 8 };
+    private HashSet<int> ButtonsIndexesBackup = new HashSet<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 
     public void InitializeBoardButtonScore()
     {
-        firstColumn = WinCheckArray[0] + WinCheckArray[1] + WinCheckArray[2];
-        secondColumn = WinCheckArray[3] + WinCheckArray[4] + WinCheckArray[5];
-        thirdColumn = WinCheckArray[6] + WinCheckArray[7] + WinCheckArray[8];
-        firstRow = WinCheckArray[0] + WinCheckArray[3] + WinCheckArray[6];
-        secondRow = WinCheckArray[1] + WinCheckArray[4] + WinCheckArray[7];
-        thirdRow = WinCheckArray[2] + WinCheckArray[5] + WinCheckArray[8];
+        firstColumn = WinCheckArray[0] + WinCheckArray[3] + WinCheckArray[6];
+        secondColumn = WinCheckArray[1] + WinCheckArray[4] + WinCheckArray[7];
+        thirdColumn = WinCheckArray[2] + WinCheckArray[5] + WinCheckArray[8];
+        firstRow = WinCheckArray[0] + WinCheckArray[1] + WinCheckArray[2];
+        secondRow = WinCheckArray[3] + WinCheckArray[4] + WinCheckArray[5];
+        thirdRow = WinCheckArray[6] + WinCheckArray[7] + WinCheckArray[8];
         firstDiagonal = WinCheckArray[0] + WinCheckArray[4] + WinCheckArray[8];
         secondDiagonal = WinCheckArray[2] + WinCheckArray[4] + WinCheckArray[6];
     }
@@ -78,9 +79,16 @@ public class ScriptableGameData : ScriptableObject
         firstDiagonal = 0;
         secondDiagonal = 0;
         outcome = "";
+        isThereAWinner = false;
         ButtonsIndexes.UnionWith(ButtonsIndexesBackup);
         DisableOrEnableButtons(true, true);
         continueChecking = false;
+    }
+
+    public void ResetScore()
+    {
+        xScore = 0;
+        oScore = 0;
     }
 
     public void DisableOrEnableButtons(bool mode, bool resetMode)
@@ -109,27 +117,14 @@ public class ScriptableGameData : ScriptableObject
     {
         int randomIndex;
         randomIndex = UnityEngine.Random.Range(0, ButtonsIndexes.Count);
-        Debug.Log("(1)random index:" + randomIndex);
         int chosenIndex = ButtonsIndexes.ElementAt(randomIndex);
-        Debug.Log("(1)chosen index: " + chosenIndex);
         ButtonsIndexes.Remove(chosenIndex);
-        foreach (int i in ButtonsIndexes)
-        {
-            Debug.Log("(1)" + i);
-        }
-
-        return randomIndex;
+        return chosenIndex;
     }
+
     public void RemoveFromHashSet(GameObject gameObject)
     {
         int ChosenIndex = Int32.Parse(gameObject.tag);
-        Debug.Log("(2) chosen index:" + ChosenIndex);
-        //int playerChosenIndex = ButtonsIndexes.ElementAt(ChosenIndex);
-        //Debug.Log("(2) player chosen index:" + playerChosenIndex);
         ButtonsIndexes.Remove(ChosenIndex);
-        foreach (int i in ButtonsIndexes)
-        {
-            Debug.Log("(2)" + i);
-        }
     }
 }
