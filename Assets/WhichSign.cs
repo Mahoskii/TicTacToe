@@ -17,9 +17,20 @@ public class WhichSign : MonoBehaviour
     public TextMeshProUGUI ButtonText;
     public static int oddOrEven;
     public ScriptableGameData ScriptableData;
+    [SerializeField] private AudioClip buttonClickSound;
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void ButtonPressed()
     {
+        audioSource.clip = buttonClickSound;
+        audioSource.Play();
+
         if(ScriptableData.curentGameType == GameType.LocalPVP)
         {
             LocalPVP();

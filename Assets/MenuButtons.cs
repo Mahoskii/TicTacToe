@@ -9,23 +9,36 @@ public class MenuButtons : MonoBehaviour
     public GameObject menuPanel;
     public ScriptableGameData ScriptableData;
 
+    [SerializeField] private AudioClip buttonClickSound;
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void PlayLocalPVP()
     {
+        PlaySFX();
         OnButtonClick(GameType.LocalPVP);
     }
 
     public void PlayVSComp()
     {
+        PlaySFX();
         OnButtonClick(GameType.VSComp);
     }
 
     public void PlayVSAI()
     {
+        PlaySFX();
         OnButtonClick(GameType.VSAI);
     }
 
     public void QuitGame()
     {
+        PlaySFX();
         Debug.Log("Exiting Game");
     }
 
@@ -34,5 +47,11 @@ public class MenuButtons : MonoBehaviour
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
         ScriptableData.curentGameType = eNum;
+    }
+
+    private void PlaySFX()
+    {
+        audioSource.clip = buttonClickSound;
+        audioSource.Play();
     }
 }
